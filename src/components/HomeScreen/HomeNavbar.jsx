@@ -11,10 +11,11 @@ function Navbar( {darkTheme, setDarkTheme}) {
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
   };
+  
 
   return (
     <>
-    <nav className="bg-white dark:bg-gray-900 w-full shadow-lg md:shadow-none border-b dark:border-gray-700
+    <nav className="bg-white fixed dark:bg-gray-900 w-full shadow-lg md:shadow-none border-b dark:border-gray-700
      border-gray-200">
       <div className="flex items-center justify-between px-4 py-3 md:px-8">
         <div className="flex items-center">
@@ -79,7 +80,10 @@ function Navbar( {darkTheme, setDarkTheme}) {
         </div>
       )}
     </nav>
+    {/* <main className='flex-1'>
     <HomeScreen/>
+
+    </main> */}
     </>
   );
 }
