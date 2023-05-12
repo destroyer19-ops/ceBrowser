@@ -12,7 +12,7 @@ const useSearch = (input) => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = axios.get(`${BASE_URL}?key=${API_KEY}&cx=${SEARCH_ENGINE_KEY}&q=${input}`)
+            const response = await axios.get(`${BASE_URL}?key=${API_KEY}&cx=${SEARCH_ENGINE_KEY}&q=${input}`)
         setData(response?.data)
         }
         fetchData();

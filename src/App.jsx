@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 import Home from './components/HomeScreen/index'
 import { Results } from './components/Results'
 // import Switch from 'react-router-dom'
+import './index.css'
 import SearchPage from './components/SearchPage'
 
 const App = () => {

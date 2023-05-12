@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { FaSearch, FaTh } from 'react-icons/fa';
 import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 import HomeScreen from './HomeScreen';
+// const [showMenu, setShowMenu] = useState(false);
 
 function Navbar( {darkTheme, setDarkTheme}) {
   const [showMenu, setShowMenu] = useState(false);
@@ -11,6 +12,7 @@ function Navbar( {darkTheme, setDarkTheme}) {
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
   };
+  
   
 
   return (
@@ -45,12 +47,10 @@ function Navbar( {darkTheme, setDarkTheme}) {
             Images
           </a>
           <FaTh className="text-gray-600 mr-4" />
-          {/* <button className="bg-blue-500 text-white rounded-full py-2 px-4 ml-4 hidden md:block">
-            Sign in
-          </button> */}
-          <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-700 dark:text-gray-900 bg-white rounded-full px-4 py-2 ml-4 md:block hover:shadow-lg'>
+          
+          {/* <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-700 dark:text-gray-900 bg-white rounded-full px-4 py-2 ml-4 md:block hover:shadow-lg'>
                 {darkTheme ? '☀' : '🌙'}
-            </button>
+            </button> */}
         </div>
         <button
           className="block md:hidden focus:outline-none"
@@ -63,7 +63,7 @@ function Navbar( {darkTheme, setDarkTheme}) {
           )}
         </button>
       </div>
-      {showMenu && (
+      {/* {showMenu && (
         <div className="flex flex-col items-center py-2 md:hidden">
           <a href="#" className="text-sm text-gray-700 hover:text-black mb-2">
             Gmail
@@ -78,7 +78,38 @@ function Navbar( {darkTheme, setDarkTheme}) {
             Sign in
           </a>
         </div>
-      )}
+      )} */}
+      {showMenu && (
+  <div className="flex flex-col items-center py-2 md:hidden">
+    <a href="#" className="text-sm text-gray-700 hover:text-black mb-2">
+      Gmail
+    </a>
+    <a href="#" className="text-sm text-gray-700 hover:text-black mb-2">
+      Images
+    </a>
+    <div className='relative'>
+      <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-base dark:bg-gray-700 dark:text-gray-900 bg-white rounded-md px-4 py-2 w-full hover:shadow-lg text-left'>
+          <span className='mr-2'>{darkTheme ? '☀' : '🌙'}</span> Dark Mode
+      </button>
+    </div>
+  </div>
+)}
+{/* {showMenu && (
+  <div className="flex flex-col items-center py-2 md:hidden">
+    <a href="#" className="text-sm text-gray-700 hover:text-black mb-2">
+      Gmail
+    </a>
+    <a href="#" className="text-sm text-gray-700 hover:text-black mb-2">
+      Images
+    </a>
+    <div className='relative'>
+      <button type='button'  className='flex text-base dark:bg-gray-700 dark:text-gray-900 bg-white rounded-md px-4 py-2 w-full hover:shadow-lg text-left'>
+          <span className='mr-2'>settings</span>
+      </button>
+    </div>
+  </div>
+)} */}
+
     </nav>
     {/* <main className='flex-1'>
     <HomeScreen/>

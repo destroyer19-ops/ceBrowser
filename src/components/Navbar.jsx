@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTimes, FaMicrophoneAlt, FaSearch } from 'react-icons/fa'
+
+// import { MoonIcon, SunIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 // import { Search } from './Search'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,14 +18,13 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
             handleSearch(e);
         }
     }
-
     const navigate = useNavigate();
     const handleSearch = (e) => {
         e.preventDefault();
         navigate(`/search?${input}`)
     }
     return (
-        <div className='p-5 pb-0 flex flex-wrap sm:justify-between justify-center items-center border-b dark:border-gray-700 border-gray-200 fixed top-0 left-0 w-full z-10'>
+        <div className='bg-white p-5 pb-0 flex flex-wrap sm:justify-between justify-center items-center border-b dark:border-gray-700 border-gray-200  top-0 left-0 w-full z-10'>
 
             <div className="flex justify-between items-center space-x-5 w-screen">
 
@@ -61,9 +62,9 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
                         </div>
                     </div>
                 </form>
-                <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-50 dark:text-gray-900 bg-white border rounded-full px-2 py-1 hover:shadow-lg'>
+                {/* <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-50 dark:text-gray-900 bg-white border rounded-full px-2 py-1 hover:shadow-lg'>
                     {darkTheme ? 'Light' : 'Dark'}
-                </button>
+                </button> */}
             </div>
             <div className="w-full max-w-screen-lg mx-auto px-5 py-3">
                 <nav className="flex flex-wrap justify-center items-center">
