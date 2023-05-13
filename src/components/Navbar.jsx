@@ -2,11 +2,9 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTimes, FaMicrophoneAlt, FaSearch } from 'react-icons/fa'
-
 // import { MoonIcon, SunIcon, MenuIcon, XIcon } from '@heroicons/react/solid';
 // import { Search } from './Search'
 import { useNavigate } from 'react-router-dom'
-
 export const Navbar = ({ darkTheme, setDarkTheme }) => {
     const [input, setInput] = useState("");
     const handleClearInput = () => {
@@ -30,8 +28,9 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
 
 
                 <Link to="/">
-                    <p className='text-2xl bg-blue-500 font-bold text-white py-1 px-2 rounded dark:bg-gray-500 dark:text-gray-900'>
-                        CeBrowse
+                
+                    <p className='text-2xl font-bold text-blue py-1 px-2 rounded dark:bg-gray-500 dark:text-gray-900'>
+                    Ce<span className="text-blue-500">Browse</span>
                     </p>
                 </Link>
 
