@@ -36,7 +36,7 @@ const ImageSearch = ({ query }) => {
             <div className="image-wrapper">
               <img src={item.url} alt='' className="image" />
             </div>
-            <p className={`title ${isDarkTheme ? 'text-white' : 'text-black'}`}>{item.title}</p>
+            <p className={`title ${isDarkTheme ? 'text-slate-800' : 'text-black'}`}>{item.title}</p>
           </div>
           </a>
         ))}
