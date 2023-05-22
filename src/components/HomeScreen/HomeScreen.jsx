@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaMicrophone, FaSearch, FaTimes } from 'react-icons/fa';
 import Navbar from './HomeNavbar';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +23,8 @@ const HomeScreen = ({ darkTheme, setDarkTheme }) => {
     e.preventDefault();
     navigate(`/search?${input}`);
   };
+
+  
 
   return (
     <>

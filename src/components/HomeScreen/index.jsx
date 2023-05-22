@@ -4,7 +4,7 @@ import HomeScreen from './HomeScreen'
 import { useState } from 'react'
 
 const Home = () => {
-    const [darkTheme, setDarkTheme] = useState(true);
+    const [darkTheme, setDarkTheme] = useState(false);
     return (
         <>
             <div className={darkTheme ? 'dark' : ''}>

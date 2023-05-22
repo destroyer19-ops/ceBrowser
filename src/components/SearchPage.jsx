@@ -2,15 +2,16 @@ import React from 'react'
 import { Navbar } from './Navbar'
 import { Link, useLocation } from 'react-router-dom'
 import useSearch from './hooks/UseSearch'
-import mocks from './mocks'
+// import mocks from './mocks'
 import { Results } from './Results'
 
-const SearchPage = ({ darkTheme, setDarkTheme }) => {
+const SearchPage = ({ darkTheme, setDarkTheme, setQuery  }) => {
   const { search } = useLocation();
   const input = search?.split('?')[1];
   // const data = mocks;
   // console.log(data)
   const {data}  = useSearch(input)
+  setQuery(input)
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />

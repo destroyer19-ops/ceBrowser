@@ -15,15 +15,15 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 //   },
 // ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Router>
       <App/>
     </Router>
-    {/* <Router> */}
-      {/* <App /> */}
+    // {/* <Router> */}
+      // {/* <App /> */}
 
-      {/* <RouterProvider router={router} /> */}
-    {/* </Router>, */}
+      // {/* <RouterProvider router={router} /> */}
+    // {/* </Router>, */}
 
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

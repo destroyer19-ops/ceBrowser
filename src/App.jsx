@@ -8,9 +8,12 @@ import { Results } from './components/Results'
 // import Switch from 'react-router-dom'
 import './index.css'
 import SearchPage from './components/SearchPage'
+import NewsSearch from './components/NewsSearch'
+import ImageSearch from './components/ImageSearch'
 
 const App = () => {
   const [darkTheme, setDarkTheme] = useState(false);
+  const [query, setQuery] = useState('')
   return (
     // <BrowserRouter>
     <div className={darkTheme ? 'dark' : ''}>
@@ -18,7 +21,11 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
 
-          <Route exact path='/search' element={<SearchPage darkTheme={darkTheme} setDarkTheme={setDarkTheme} />} />
+          <Route exact path='/search' element={<SearchPage darkTheme={darkTheme} setDarkTheme={setDarkTheme} setQuery={setQuery}/>} />
+          <Route exact path='/all' element={<SearchPage darkTheme={darkTheme} setDarkTheme={setDarkTheme} setQuery={setQuery}/>} />
+          <Route exact path='/news' element={<NewsSearch darkTheme={darkTheme} setDarkTheme={setDarkTheme} query={query}/>} />
+          <Route exact path='/images' element={<ImageSearch darkTheme={darkTheme} setDarkTheme={setDarkTheme} query={query}/>} />
+          {/* <Route exact path='/videos' element={<ImageSearch darkTheme={darkTheme} setDarkTheme={setDarkTheme} query={query}/>} /> */}
 
         </Routes>
         {/* <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme}/> */}
