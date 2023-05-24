@@ -56,17 +56,17 @@ const ImageSearch = ({ query }) => {
     
     <>
       <Navbar  />
-      <div className={`mt-8 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'}`}>
+      <div className={`mb-0 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'}`}>
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <Loading />
           </div>
         ) : (
           <>
-            <div className={`grid ${isDarkTheme ? 'bg-dark' : 'bg-light'} grid-cols-4 gap-4 p-10 `}>
+            <div className={`grid ${isDarkTheme ? 'bg-dark' : 'bg-light'} grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-10 overflow-hidden `}>
               {images.map((item, index) => (
                 <a key={index} href={item.webpageUrl}>
-                  <div className={`image-card ${isDarkTheme ? 'dark' : 'bg-white'} shadow-lg`}>
+                  <div className={`image-card ${isDarkTheme ? 'dark' : 'bg-white'} shadow-lg rounded-lg`}>
                     <div className="image-wrapper">
                       <img src={item.url} alt='' className="image rounded-lg" />
                     </div>
@@ -78,7 +78,7 @@ const ImageSearch = ({ query }) => {
 
           </>
         )}
-        <div className="flex justify-center mt-6 mb-6">
+        <div className="flex justify-center mt-6 pb-6">
           <button
             onClick={handlePrevPage}
             className={`px-4 py-2 rounded-md ${currentPage === 1
