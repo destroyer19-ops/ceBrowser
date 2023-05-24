@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Navbar } from './Navbar';
 import Loading from './Loading';
 
-const NewsSearch = ({ query }) => {
+const NewsSearch = ({ query, darkTheme, setDarkTheme }) => {
   const [news, setNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -29,7 +29,7 @@ const NewsSearch = ({ query }) => {
       .then((response) => response.json())
       .then((data) => {
         setNews(data.value);
-        console.log(data)
+        console.log(data);
         setTotalPages(Math.ceil(data.totalCount / 20));
         setLoading(false);
       });
@@ -50,18 +50,21 @@ const NewsSearch = ({ query }) => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
   switch (location.pathname) {
     case '/news':
       return (
-        <div className={`bg-${darkMode ? 'black' : 'white'} min-h-screen transition-colors duration-300`}>
-          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+        <div classsName={`bg-${darkMode ? 'black' : 'white'} min-h-screen transition-colors duration-300`}>
+          <Navbar darkMode={darkTheme} setDarkMode={setDarkTheme} />
           <div className="container mx-auto px-4 py-8">
-            <h1 className={`text-3xl font-bold mb-6 text-${darkMode ? 'white' : 'gray-800'}`}>News Search</h1>
-            <div className="grid dark:bg-slate-500 gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {loading ? (
+            {/* <h1 className={`text-3xl font-bold mb-6 text-${darkMode ? 'white' : 'gray-800'}`}>News Search</h1> */}
+            {loading ? (
+              <div className="flex justify-center items-center h-full">
                 <Loading />
-              ) : (
-                news.map((item, index) => (
+              </div>
+            ) : (
+              <div className="grid dark:bg-slate-800 gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {news.map((item, index) => (
                   <a
                     key={index}
                     href={item.url}
@@ -71,12 +74,7 @@ const NewsSearch = ({ query }) => {
                   >
                     <div className="flex-shrink-0 aspect-w-3 aspect-h-2">
                       {item.image.url && (
-                        <img
-                          src={item.image.url}
-                          alt={item.title}
-                          className="object-cover w-full h-full"
-                        />
-                        
+                        <img src={item.image.url} alt={item.title} className="object-cover w-full h-full" />
                       )}
                     </div>
                     <div className={`p-4 flex flex-col flex-grow text-${darkMode ? 'white' : 'gray-800'}`}>
@@ -88,22 +86,32 @@ const NewsSearch = ({ query }) => {
                             className="w-8 h-8 mr-2 rounded-full"
                           />
                         )}
-                        <p className={`text-sm font-medium hover:underline ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                        <p
+                          className={`text-sm font-medium hover:underline ${
+                            darkMode ? 'text-blue-300' : 'text-blue-700'
+                          }`}
+                        >
                           {item.provider.name}
                         </p>
                       </div>
-                      <h2 className={`text-lg font-semibold hover:underline ${darkMode ? 'text-blue-300' : 'text-blue-700'}`}>
+                      <h2
+                        className={`text-lg font-semibold hover:underline ${
+                          darkMode ? 'text-blue-300' : 'text-blue-700'
+                        }`}
+                      >
                         {item.title}
                       </h2>
                       <p className={`text-sm mb-2 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                         {getTimeSincePublished(item.datePublished)}
                       </p>
-                      <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>{item.category}</p>
+                      <p className={`text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                        {item.category}
+                      </p>
                     </div>
                   </a>
-                ))
-              )}
-            </div>
+                ))}
+              </div>
+            )}
             <div className="flex justify-center mt-6">
               <button
                 onClick={handlePrevPage}
@@ -140,12 +148,13 @@ const NewsSearch = ({ query }) => {
             </div>
           </div>
         </div>
-      )
+      );
     case '/videos':
-      return ( <div>
+      return (
+        <div>
           search
-      </div>
-      )
+        </div>
+      );
   }
 };
 

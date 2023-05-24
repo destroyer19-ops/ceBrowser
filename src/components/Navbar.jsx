@@ -30,34 +30,36 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
             Ce<span className="text-blue-500">Browse</span>
           </p>
         </Link>
-        <form onSubmit={handleSearch} className="flex items-center justify-center w-full max-w-lg">
-          <div className="relative w-full max-w-lg">
-            <div className="flex items-center">
-              <input
-                className="border-2 border-gray-400 text-black rounded-full py-2 px-4 w-full pl-10 pr-12"
-                type="text"
-                placeholder="Search"
-                autoFocus
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                onKeyDown={handleKeyPress}
-                onKeyPress={handleKeyPress}
-              />
-              {input && (
-                <button
-                  onClick={handleClearInput}
-                  className="absolute cursor-pointer right-12 top-1/2 transform -translate-y-1/2 text-gray-500"
-                >
-                  <FaTimes />
+        <div className="flex items-center justify-center w-full m-auto max-w-lg">
+          <form onSubmit={handleSearch} className="w-full">
+            <div className="relative">
+              <div className="flex items-center">
+                <input
+                  className="border-2 border-gray-400 text-black rounded-full py-2 px-4 w-full pl-10 pr-12"
+                  type="text"
+                  placeholder="Search"
+                  autoFocus
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  onKeyDown={handleKeyPress}
+                  onKeyPress={handleKeyPress}
+                />
+                {input && (
+                  <button
+                    onClick={handleClearInput}
+                    className="absolute cursor-pointer right-12 top-1/2 transform -translate-y-1/2 text-gray-500"
+                  >
+                    <FaTimes />
+                  </button>
+                )}
+                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
+                  <FaMicrophoneAlt className="w-3 h-auto md:w-5 text-gray-400" size={24} />
                 </button>
-              )}
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <button className="absolute right-2 top-1/2 transform -translate-y-1/2">
-                <FaMicrophoneAlt className="w-3 h-auto md:w-5 text-gray-400" size={24} />
-              </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
         {/* <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-50 dark:text-gray-900 bg-white border rounded-full px-2 py-1 hover:shadow-lg'>
             {darkTheme ? 'Light' : 'Dark'}
         </button> */}

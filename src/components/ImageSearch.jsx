@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './Navbar';
+import Loading from './Loading';
 
 const ImageSearch = ({ query }) => {
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const [totalPages, setTotalPages] = useState(0);
+
   const customQuery = encodeURIComponent(query);
-  console.log(customQuery);
 
   useEffect(() => {
-    const url = `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${customQuery}&pageNumber=1&pageSize=30&autoCorrect=true`;
+    setLoading(true);
+    const url = `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${customQuery}&pageNumber=${currentPage}&pageSize=30&autoCorrect=true`;
     const options = {
       method: 'GET',
       headers: {
@@ -20,26 +27,82 @@ const ImageSearch = ({ query }) => {
       .then((response) => response.json())
       .then((data) => {
         setImages(data.value);
-        console.log(data);
+        setTotalPages(data.totalCount);
+        setLoading(false);
       });
-  }, []);
+  }, [currentPage]);
 
-  const isDarkTheme = true; // Set to false for light theme
+  const isDarkTheme = false; // Set to false for light theme
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
 
   return (
+    
     <>
-      <Navbar />
-      <div className={`grid ${isDarkTheme ? 'bg-dark' : 'bg-light'} grid-cols-4 gap-4 p-10`}>
-        {images.map((item, index) => (
-            <a key={index} href={item.webpageUrl}>
-          <div  className={`image-card ${isDarkTheme ? 'dark' : 'light'}`}>
-            <div className="image-wrapper">
-              <img src={item.url} alt='' className="image" />
-            </div>
-            <p className={`title ${isDarkTheme ? 'text-slate-800' : 'text-black'}`}>{item.title}</p>
+      <Navbar  />
+      <div className={`mt-8 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'}`}>
+        {loading ? (
+          <div className="flex justify-center items-center h-full">
+            <Loading />
           </div>
-          </a>
-        ))}
+        ) : (
+          <>
+            <div className={`grid ${isDarkTheme ? 'bg-dark' : 'bg-light'} grid-cols-4 gap-4 p-10 `}>
+              {images.map((item, index) => (
+                <a key={index} href={item.webpageUrl}>
+                  <div className={`image-card ${isDarkTheme ? 'dark' : 'bg-white'} shadow-lg`}>
+                    <div className="image-wrapper">
+                      <img src={item.url} alt='' className="image rounded-lg" />
+                    </div>
+                    <p className={`title mt-5 ml-3 pb-5  ${isDarkTheme ? 'text-slate-800' : 'text-gray-700'}`}>{item.title}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
+
+          </>
+        )}
+        <div className="flex justify-center mt-6 mb-6">
+          <button
+            onClick={handlePrevPage}
+            className={`px-4 py-2 rounded-md ${currentPage === 1
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-blue-500 text-white'
+              }`}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+          <p className={`mx-4 text-${darkMode ? 'white' : 'gray-800'}`}>
+            Page {currentPage} of {totalPages}
+          </p>
+          <button
+            onClick={handleNextPage}
+            className={`px-4 py-2 rounded-md ${currentPage === totalPages
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'bg-blue-500 text-white'
+              }`}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );
