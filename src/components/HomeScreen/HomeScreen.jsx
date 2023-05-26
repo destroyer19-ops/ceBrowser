@@ -16,6 +16,7 @@ const HomeScreen = ({ darkTheme, setDarkTheme }) => {
       handleSearch(e);
     }
   };
+  
 
   const navigate = useNavigate();
 
@@ -60,11 +61,13 @@ const HomeScreen = ({ darkTheme, setDarkTheme }) => {
               </button>
             </div>
           </div>
-          <button className="hidden md:block bg-blue-500 text-white rounded-full py-2 px-4 ml-4">
+          <button
+          onClick={handleSearch }
+           className="hidden md:block bg-blue-500 text-white rounded-full py-2 px-4 ml-4">
             Search
           </button>
         </form>
-        <button className="block md:hidden bg-blue-500 text-white rounded-full py-2 px-4 mt-4">
+        <button onClick={handleSearch} className="block md:hidden bg-blue-500 text-white rounded-full py-2 px-4 mt-4">
           Search
         </button>
         <p className="mt-8 text-sm text-gray-500 mb-3">

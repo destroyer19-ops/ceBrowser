@@ -57,7 +57,7 @@ const ImageSearch = ({ query }) => {
     
     <>
       <Navbar  />
-      <div className={`mb-0 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'}`}>
+      <div className={`mb-10 pb-10 ${isDarkTheme ? 'bg-gray-700' : 'bg-gray-200'}`}>
         {loading ? (
           <div className="flex justify-center items-center h-full">
             <Loading />
