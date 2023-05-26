@@ -1,9 +1,10 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import { Footer } from './Footer';
 
 export const Results = ({ data = {} }) => {
   return (
-    <div className="py-4 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <div className="py-4 px-4 sm:px-6 lg:px-8 mb-10 max-w-3xl mx-auto">
       <Typography
         variant='p'
         component='p'
@@ -66,6 +67,7 @@ export const Results = ({ data = {} }) => {
           </a>
         </div>
       ))}
+      <Footer/>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaTimes, FaMicrophoneAlt, FaSearch } from 'react-icons/fa';
+import { FaTimes, FaMicrophoneAlt, FaSearch, FaTh } from 'react-icons/fa';
 
 export const Navbar = ({ darkTheme, setDarkTheme }) => {
   const [input, setInput] = useState('');
@@ -59,6 +59,21 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
               </div>
             </div>
           </form>
+          <div className="hidden md:flex items-center">
+            <a
+              href="#"
+              className="text-sm text-gray-700 hover:text-black mr-4"
+            >
+              Gmail
+            </a>
+            <a
+              href="#"
+              className="text-sm text-gray-700 hover:text-black mr-4"
+            >
+              Images
+            </a>
+            <FaTh className="text-gray-600 mr-4" />
+</div>
         </div>
         {/* <button type='button' onClick={() => setDarkTheme(!darkTheme)} className='text-xl dark:bg-gray-50 dark:text-gray-900 bg-white border rounded-full px-2 py-1 hover:shadow-lg'>
             {darkTheme ? 'Light' : 'Dark'}

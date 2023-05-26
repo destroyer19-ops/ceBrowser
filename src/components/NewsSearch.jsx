@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Navbar } from './Navbar';
 import Loading from './Loading';
-// import Footer from './Footer';
+import { Footer } from './Footer';
 
 const NewsSearch = ({ query, darkTheme, setDarkTheme }) => {
   const [news, setNews] = useState([]);
@@ -148,7 +148,7 @@ const NewsSearch = ({ query, darkTheme, setDarkTheme }) => {
               </button>
             </div>
           </div>
-          {/* <Footer/> */}
+          <Footer/>
         </div>
       );
     case '/videos':
