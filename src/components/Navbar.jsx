@@ -35,7 +35,7 @@ export const Navbar = ({ darkTheme, setDarkTheme }) => {
             <div className="relative">
               <div className="flex items-center">
                 <input
-                  className="border-2 border-gray-400 text-black rounded-full py-2 px-4 w-full pl-10 pr-12"
+                  className="border-2 shadow-lg sm:shadow border-gray-400 text-black rounded-full py-2 px-4 w-full pl-10 pr-12"
                   type="text"
                   placeholder="Search"
                   autoFocus

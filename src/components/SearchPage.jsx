@@ -9,8 +9,9 @@ const SearchPage = ({ darkTheme, setDarkTheme, setQuery  }) => {
   const { search } = useLocation();
   const input = search?.split('?')[1];
   // const data = mocks;
-  // console.log(data)
   const {data}  = useSearch(input)
+  // console.log({data})
+
   setQuery(input)
   return (
     <div className="flex flex-col min-h-screen">
